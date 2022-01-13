@@ -30,6 +30,8 @@ func main() {
 	fmt.Printf("Time for finding primes up till 10,000,000: %s\n", t)
 }
 
+// reference for algorithm
+// https://www.algolist.net/Algorithms/Number_theoretic/Sieve_of_Eratosthenes
 func findPrimes(n int) (string, error) {
 	var isComposite []bool
 
