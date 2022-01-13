@@ -4,6 +4,7 @@ import "errors"
 import "fmt"
 import "os"
 import "time"
+import "math"
 
 func main() {
 
@@ -34,7 +35,6 @@ func main() {
 // https://www.algolist.net/Algorithms/Number_theoretic/Sieve_of_Eratosthenes
 func findPrimes(n int) (string, error) {
 	var isComposite []bool
-
 	var primes []int
 
 	if n < 1 {
@@ -48,12 +48,13 @@ func findPrimes(n int) (string, error) {
 
 	start := time.Now()
 
-	for m := 2; m < n; m++ {
-		if isComposite[m] == false {
-			primes = append(primes, m)
-			for k := m; k < n; k++ {
-				if k*m < n {
-					isComposite[k*m] = true
+	for  p := 2; float64(p) < math.Sqrt(float64(n)); p++ {
+		if isComposite[p] == false {
+			// add primte to list
+			primes = append(primes, p)
+			for k := p; k < n; k++ {
+				if k*p < n {
+					isComposite[k*p] = true;
 				}
 			}
 		}
